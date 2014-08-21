@@ -6,8 +6,16 @@ class Line
 		@name = attributes[:name]
 	end
 
-	def all
-		line_array = []
+	def self.all
+		lines_array = []
+		results = DB.exec("SELECT * FROM lines;")
+		results.each do |result|
+			attributes = {:name => result['name']}
+			 current_line = Line.new(attributes)
+			 lines_array << current_line
+		end
+		lines_array
 	end
+
 
 end

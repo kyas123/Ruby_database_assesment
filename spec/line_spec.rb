@@ -7,8 +7,7 @@ describe Line do
 	end
 
 	it 'starts as an empty array' do
-		test_line = Line.new(:name => "Green")
-		expect(test_line.all).to eq []
+		test_line = Line.new({:name => "Green"})
+		expect(Line.all).to eq []
 	end
-
 end
