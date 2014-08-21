@@ -6,6 +6,9 @@ describe Line do
 		expect(test_line).to be_an_instance_of Line
 	end
 
-	# it "allows user to add a station to a line" do
+	it 'starts as an empty array' do
+		test_line = Line.new(:name => "Green")
+		expect(test_line.all).to eq []
+	end
 
 end
