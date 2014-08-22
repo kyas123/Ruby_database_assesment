@@ -17,6 +17,14 @@ class Station
 		station_array
 	end
 
+	def add
+		results = DB.exec("INSERT INTO stations (name) VALUES ('#{name}');")
+	end
+
+	def ==(another_station)
+		self.name == another_station.name
+	end
+
 	
 
 
