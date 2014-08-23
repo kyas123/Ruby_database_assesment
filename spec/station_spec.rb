@@ -17,11 +17,18 @@ describe Station do
 	expect(Station.all).to eq [test_station]
 	end
 
-	it 'will recognize 2 stationss with the same name as different' do
+	it 'will recognize 2 stations with the same name as different' do
 		test_station = Station.new({:name => "A"})
 		test_station2 = Station.new({:name => "A"})
 		test_station.add
 		test_station2.add
 		expect(test_station).to eq test_station2
 	end
+
+	it 'gives an id to a station when added' do
+		test_station = Station.new({:name => "A"})
+		test_station.add
+		expect(test_station.id).to be_an_instance_of Fixnum
+	end
+
 end
