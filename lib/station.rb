@@ -24,7 +24,7 @@ class Station
 	end
 
 	def ==(another_station)
-		self.name == another_station.name
+		(self.name == another_station.name) 
 	end
 
 	
