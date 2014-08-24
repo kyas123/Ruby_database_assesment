@@ -23,10 +23,21 @@ class Line
 	@id = results.first['id'].to_i
 	end
 
-	def ==(another_stop)
-		self.name == another_stop.name
+	def ==(another_line)
+		self.name == another_line.name
 		
 	end
+
+	  def stops
+    stations = []
+    results = DB.exec("SELECT stations.* FROM lines JOIN stops ON (lines.id = stops.line_id) JOIN stations ON (stations.id = stops.station_id) WHERE lines.id = #{@id};")
+    results.each do |result|
+      name = result['name']
+      id = result['id'].to_i
+      stations << Station.new(:name => result['name'], :id => result['id'])
+    end
+    stations
+  end
 
 
 end
