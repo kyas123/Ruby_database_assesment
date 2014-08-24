@@ -10,6 +10,6 @@ RSpec.configure do |toss|
   toss.before(:each) do
     DB.exec("DELETE FROM lines *;")
     DB.exec("DELETE FROM stations *;")
-    # DB.exec("DELETE FROM stops *;")
+    DB.exec("DELETE FROM stops *;")
   end
 end

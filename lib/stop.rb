@@ -21,8 +21,8 @@ class Stop
 			end
 
 	def save
-		results = DB.exec("INSERT INTO stops (station_id, line_id) VALUES (#{@station_id}, #{@line_id});")
-
+		results = DB.exec("INSERT INTO stops (station_id, line_id) VALUES (#{@station_id}, #{@line_id}) RETURNING id;")
+		@id = results.first['id'].to_i
 	end
 
 	def ==(another_stop)
