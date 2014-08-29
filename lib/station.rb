@@ -11,9 +11,9 @@ class Station
 		station_array = []
 		results = DB.exec("SELECT * FROM stations;")
 		results.each do |result|	
-			attributes = ({:name => result['name'], :id => result['id']})
-			current_station = Station.new(attributes)
-			station_array << current_station
+		attributes = ({:name => result['name'], :id => result['id']})
+		current_station = Station.new(attributes)
+		station_array << current_station
 		end
 		station_array
 	end
@@ -36,6 +36,19 @@ class Station
       lines << Line.new(:name => result['name'], :id => result['id'])
     end
     lines
+  end
+
+  	def add_line(line_input)
+    DB.exec("INSERT INTO stops (station_id, line_id) VALUES ('#{self.id}', '#{input_line_id}');")
+  	end
+
+   def self.find(station_entry)
+  	station =[]
+  	results = DB.exec("SELECT * FROM stations WHERE name = '#{station_entry}';")
+  	results.each do |result|
+  		station << Station.new(:name => result['name'], :id => result['id'])
+  	end
+  	station.first
   end
 
 end

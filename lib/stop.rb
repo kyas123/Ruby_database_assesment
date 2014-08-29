@@ -10,15 +10,16 @@ class Stop
 	def self.all
 		stops = []
 		results = DB.exec("SELECT * FROM stops;")
-			results.each do |result|
-				attributes = {:station_id => result['station_id'],
-						:line_id => result['line_id'],
-						:id => result['id']}
-					current_stop = Stop.new(attributes)
-					stops << current_stop
-				end
-				stops
-			end
+		results.each do |result|
+			attributes = {:station_id => result['station_id'],
+				:line_id => result['line_id'],
+				:id => result['id']}
+			current_stop = Stop.new(attributes)
+			stops << current_stop
+		end
+		stops
+	end
+
 
 	def add
 		results = DB.exec("INSERT INTO stops (station_id, line_id) VALUES (#{@station_id}, #{@line_id}) RETURNING id;")
