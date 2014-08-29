@@ -48,19 +48,6 @@ def add_line
 	puts "#{new_line.name} has been saved to your lines.\n\n"
 end
 
-def list_stops
-	puts "Here are all your stops\n\n"
-	Stop.all.each do |listed_stop|
-		puts "#{listed_stop.line_id}, #{listed_stop.station_id}"
-	end
-end
-	
-
-def list_lines
-	puts "Here are all your lines\n\n"
-	Line.all.each { |line| puts line.name}
-end
-
 
 def add_stations
 	list_lines
@@ -73,14 +60,22 @@ def add_stations
 	line.add_station(station.id)
 end
 
-
-
 def list_stations
 	puts " heres ya stations:"
 	Station.all.each { |station| puts station.name}
 end
 
+def list_lines
+	puts "Here are all your lines\n\n"
+	Line.all.each { |line| puts line.name}
+end
 
-
+def list_stops
+	puts "Here are all your stops\n\n"
+	Stop.all.each do |listed_stop|
+		puts "#{listed_stop.line_id}, #{listed_stop.station_id}"
+	end
+end
+	
 
 main_menu
